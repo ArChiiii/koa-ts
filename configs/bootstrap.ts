@@ -14,5 +14,9 @@ export const bootstrapBefore = (): object => {
   return result.parsed
 }
 
+import { initializeApp, applicationDefault } from 'firebase-admin/app'
+
 // "after" will trigger after the "container" mounted..
-export const bootstrapAfter = (): any => {}
+export const bootstrapAfter = (): any => {
+  const app = initializeApp({ credential: applicationDefault() })
+}
