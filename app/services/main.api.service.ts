@@ -3,7 +3,7 @@ import axios, { AxiosInstance } from 'axios'
 import { Service } from 'typedi'
 
 @Service()
-export class MainApiService {
+export default class MainApiService {
   api: AxiosInstance
 
   createApi() {
@@ -11,14 +11,6 @@ export class MainApiService {
     this.api = axios.create({
       baseURL: process.env.MAIN_URL,
     })
-    // this.api.interceptors.request.use(config => {
-    //   config.headers = {
-    //     ...config.headers,
-    //   }
-
-    //   return config
-    // })
-
     return this.api
   }
 

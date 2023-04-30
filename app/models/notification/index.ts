@@ -13,3 +13,12 @@ export class Notification {
   entity_id: string
   actor_id: string
 }
+
+export class NotificationData {
+  heading: string
+  title: string
+  message: string
+  img_url: string
+  route_url: string
+  created_at: string //second since spoch
+}

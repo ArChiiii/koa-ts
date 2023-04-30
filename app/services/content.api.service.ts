@@ -3,7 +3,7 @@ import axios, { AxiosInstance } from 'axios'
 import { Service } from 'typedi'
 
 @Service()
-export class ContentApiService {
+export default class ContentApiService {
   api: AxiosInstance
 
   createApi() {

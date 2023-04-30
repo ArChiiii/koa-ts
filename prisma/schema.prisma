@@ -7,8 +7,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Session {
-  id        Int      @id @default(autoincrement())
-  name String
-  createdAt DateTime @default(now())
+model notification_change {
+  id                     Int                 @id @default(autoincrement())
+  notification_object_id Int
+  actor_id               Int
+  notification_object    notification_object @relation(fields: [notification_object_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_notification_object_2")
+
+  @@index([actor_id], map: "fk_notification_actor_id_idx")
+  @@index([notification_object_id], map: "fk_notification_object_idx_2")
+}
+
+model entity_type_object {
+  id                  Int                   @id @default(autoincrement())
+  action              String
+  entity              String
+  notification_object notification_object[]
+}
+
+model notification_object {
+  id                  Int                   @id @default(autoincrement())
+  entity_type         Int
+  entity_id           Int
+  created_on          DateTime              @default(now()) @db.Timestamp(6)
+  status              Int                   @db.SmallInt
+  entity_type_object  entity_type_object    @relation(fields: [entity_type], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_entity_type")
+  notification        notification[]
+  notification_change notification_change[]
+}
+
+model notification {
+  id                     Int                 @id @default(autoincrement())
+  notification_object_id Int
+  notifier_id            Int
+  status                 Int                 @db.SmallInt
+  notification_object    notification_object @relation(fields: [notification_object_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_notification_object")
+
+  @@index([notifier_id], map: "fk_notification_notifier_id_idx")
+  @@index([notification_object_id], map: "fk_notification_object_idx")
 }

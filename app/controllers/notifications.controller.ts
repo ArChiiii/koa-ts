@@ -25,8 +25,6 @@ export class notificationsController {
     // if (!name) {
     //   throw new BadRequestError('username is required')
     // }
-
-    console.log(body)
     return await this.notificationsService.create(body)
   }
 }

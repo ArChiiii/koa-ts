@@ -1,3 +1,5 @@
 export * from './notifications.service'
 export * from './content.api.service'
 export * from './main.api.service'
+export * from './fcm.service'
+export * from './firestore.service'

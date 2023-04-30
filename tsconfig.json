@@ -30,7 +30,7 @@
     "**/*.tsx"
   ],
   "files": [
-    "app.ts",
+    "app.ts", "./app/helpers/notification/LikeCarPostNotifierCollector.ts",
   ],
   "exclude": [
     "node_modules",
