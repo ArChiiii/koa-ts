@@ -28,7 +28,7 @@ export class FirestoreService {
   async fetchUserbyPostID(post_id) {
     const userCollectionRef = this.collectionRef(`users`)
     const users = await userCollectionRef
-      .where('liked', 'array-contains', post_id)
+      .where('liked', 'array-contains', `${post_id}`)
       .select('uid')
       .get()
     return users.docs.map(doc => doc.data().uid)

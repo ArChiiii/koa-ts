@@ -2,7 +2,7 @@ type Nullable<T> = T | null
 
 export class Post {
   name: string
-  post_id?: string
+  post_id?: string | number
   car_id: Nullable<string>
   dealerID: Nullable<string>
   imgs: string[]

@@ -3,7 +3,7 @@ import axios, { AxiosInstance } from 'axios'
 import { Service } from 'typedi'
 import MainApiService from './main.api.service'
 @Service()
-export default class MainRepoService {
+export class MainRepoService {
   constructor(private mainApiService: MainApiService) {}
 
   async fetchPost(post_id) {
