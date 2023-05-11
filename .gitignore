@@ -195,3 +195,5 @@ gen
 ### PuTTY template
 # Private key
 *.ppk
+
+keys/*
